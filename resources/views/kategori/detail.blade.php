@@ -55,33 +55,14 @@
                                         <div class="text-muted">Tidak ada deskripsi.</div>
                                     @endif
                                 </div>
-
-                                <!-- Tombol Aksi -->
-                                <div class="d-flex gap-2 align-items-center">
-                                    <!-- Tombol View -->
-                                    <a href="{{ route('artikel.show', $haha->idArtikel) }}" class="btn btn-primary btn-sm">
-                                        <i class="fa fa-eye"></i> View
-                                    </a>
-
-                                    <!-- Tombol Edit -->
-                                    <a href="{{ route('artikel.edit', $haha->idArtikel) }}" class="btn btn-warning btn-sm">
-                                        <i class="fa fa-edit"></i> Edit
-                                    </a>
-
-                                    <a href="{{ route('artikel.destroy', $haha->idArtikel) }}"
-                                        class="btn btn-danger btn-sm delete-btn" data-id="{{ $haha->idArtikel }}">
-                                        <i class="fa fa-trash"></i> Delete
-                                    </a>
-
-                                </div>
                             </div>
                         </div>
                     @endforeach
                     <!-- /post -->
 
-                    <div class="pagination justify-content-center" style="margin-left: 90rem">
+                    {{-- <div class="pagination justify-content-center" style="margin-left: 90rem">
                         {{ $artikel->links('pagination::bootstrap-4') }}
-                    </div>
+                    </div> --}}
 
                 </div>
             </div>

@@ -11,17 +11,18 @@
                     <div class="col-md-8 hot-post-left">
                         <!-- post -->
                         <div class="post post-thumb">
-                            <a class="post-img" href="blog-post.html">
+                            <a class="post-img" href={{ route('artikel.show', $blogs->idArtikel) }}>
                                 <img src="{{ asset('storage/gambar/' . $blogs->gambar) }}" alt=""
                                     style="width: 100%; height: 505px; object-fit: cover; border-radius: 10px;">
                             </a>
                             <div class="post-body">
                                 <div class="post-category">
-                                    <a href="category.html">{{ $blogs->kategoris->kategori }}</a>
+                                    <a
+                                        href={{ route('kategori.detail', $blogs->idKategori) }}>{{ $blogs->kategoris->kategori }}</a>
                                 </div>
-                                <h3 class="post-title title-lg"><a href="blog-post.html">{{ $blogs->judul }}</a></h3>
+                                <h3 class="post-title title-lg"><a>{{ $blogs->judul }}</a></h3>
                                 <ul class="post-meta">
-                                    <li><a href="author.html">{{ $blogs->users->name }}</a></li>
+                                    <li><a>{{ $blogs->users->name }}</a></li>
                                     <li>{{ $blogs->created_at ? $blogs->created_at->format('d F Y') : 'No date available' }}
                                     </li>
                                 </ul>
@@ -36,17 +37,18 @@
                     @foreach ($blogss as $blog)
                         <div class="post post-thumb">
 
-                            <a class="post-img" href="blog-post.html">
+                            <a class="post-img" href={{ route('artikel.show', $blog->idArtikel) }}>
                                 <img src="{{ asset('storage/gambar/' . $blog->gambar) }}" alt=""
                                     style="width: 100%; height: 250px; object-fit: cover;">
                             </a>
                             <div class="post-body">
                                 <div class="post-category">
-                                    <a href="category.html">{{ $blog->kategoris->kategori }}</a>
+                                    <a
+                                        href={{ route('kategori.detail', $blog->idKategori) }}>{{ $blog->kategoris->kategori }}</a>
                                 </div>
-                                <h3 class="post-title"><a href="blog-post.html">{{ $blog->judul }}</a></h3>
+                                <h3 class="post-title"><a>{{ $blog->judul }}</a></h3>
                                 <ul class="post-meta">
-                                    <li><a href="author.html">{{ $blog->users->name }}</a></li>
+                                    <li><a>{{ $blog->users->name }}</a></li>
                                     <li>{{ $blogs->created_at ? $blog->created_at->format('d F Y') : 'No date available' }}
                                     </li>
                                 </ul>
@@ -81,16 +83,17 @@
                         @foreach ($recent as $baru)
                             <div class="col-md-6">
                                 <div class="post">
-                                    <a class="post-img" href="blog-post.html"><img
+                                    <a class="post-img" href={{ route('artikel.show', $baru->idArtikel) }}><img
                                             src="{{ asset('storage/gambar/' . $baru->gambar) }}" alt=""
                                             style="width: 100%; height: 250px; object-fit: cover;"></a>
                                     <div class="post-body">
                                         <div class="post-category">
-                                            <a href="category.html">{{ $baru->kategoris->kategori }}</a>
+                                            <a
+                                                href={{ route('kategori.detail', $baru->idKategori) }}>{{ $baru->kategoris->kategori }}</a>
                                         </div>
-                                        <h3 class="post-title"><a href="blog-post.html">{{ $baru->judul }}</a></h3>
+                                        <h3 class="post-title"><a>{{ $baru->judul }}</a></h3>
                                         <ul class="post-meta">
-                                            <li><a href="author.html">{{ $baru->users->name }}</a></li>
+                                            <li><a>{{ $baru->users->name }}</a></li>
                                             <li>{{ $baru->created_at ? $baru->created_at->format('d F Y') : 'No date available' }}
                                         </ul>
                                     </div>
@@ -141,16 +144,19 @@
                         <!-- post -->
                         @foreach ($popular as $gacor)
                             <div class="post post-widget">
-                                <a class="post-img" href="blog-post.html"><img
+                                <a class="post-img" href={{ route('artikel.show', $gacor->idArtikel) }}><img
                                         src="{{ asset('/storage/gambar/' . $gacor->gambar) }}" alt=""
                                         style="width: 100%; height: 120px; object-fit: cover;"></a>
                                 <div class="post-body">
                                     <div class="post-category">
-                                        <a href="category.html">{{ $gacor->kategoris->kategori }}</a>
+                                        <a
+                                            href={{ route('kategori.detail', $gacor->idKategori) }}>{{ $gacor->kategoris->kategori }}</a>
                                     </div>
-                                    <h3 class="post-title"><a href="blog-post.html"></a>{{ $gacor->judul }}</h3>
+                                    <h3 class="post-title"><a
+                                            href={{ route('artikel.show', $gacor->idArtikel) }}></a>{{ $gacor->judul }}
+                                    </h3>
                                     <ul class="post-meta">
-                                        <li><a href="author.html">{{ $gacor->users->name }}</a></li>
+                                        <li><a>{{ $gacor->users->name }}</a></li>
                                         <li>Rating: {{ $gacor->avg_rating }}
                                         </li>
                                     </ul>
@@ -182,23 +188,29 @@
                     @foreach ($artikel as $haha)
                         <div class="post post-row">
 
-                            <a class="post-img" href="blog-post.html"><img
+                            <a class="post-img" href={{ route('artikel.show', $haha->idArtikel) }}><img
                                     src="{{ asset('/storage/gambar/' . $haha->gambar) }}" alt=""
                                     style="width: 100%; height: 300px; object-fit: cover;"></a>
                             <div class="post-body">
                                 <div class="post-category">
-                                    <a href="category.html">{{ $haha->kategoris->kategori }}</a>
+                                    <a
+                                        href={{ route('kategori.detail', $haha->idKategori) }}>{{ $haha->kategoris->kategori }}</a>
                                 </div>
-                                <h3 class="post-title"><a href="blog-post.html">{{ $haha->judul }}</a></h3>
+                                <h3 class="post-title"><a
+                                        href={{ route('artikel.show', $haha->idArtikel) }}>{{ $haha->judul }}</a></h3>
                                 <ul class="post-meta">
-                                    <li><a href="author.html">{{ $haha->users->name }}</a></li>
+                                    <li><a>{{ $haha->users->name }}</a></li>
                                     <li>{{ $haha->created_at ? $haha->created_at->format('d F Y') : 'No date available' }}
                                 </ul>
-                                @foreach (array_slice(explode("\n", strip_tags($haha->deskripsi)), 0, 1) as $paragraph)
-                                    <p>
-                                        {{ \Illuminate\Support\Str::words($paragraph, 50, '...') }}
-                                    </p>
-                                @endforeach
+                                @if (!empty($haha->deskripsi))
+                                    @foreach (array_slice(explode("\n", $haha->deskripsi), 0, 1) as $paragraph)
+                                        <div>
+                                            {!! \Illuminate\Support\Str::words($paragraph, 50, '...') !!}
+                                        </div>
+                                    @endforeach
+                                @else
+                                    <div class="text-muted">Tidak ada deskripsi.</div>
+                                @endif
                             </div>
                         </div>
                     @endforeach

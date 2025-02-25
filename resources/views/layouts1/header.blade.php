@@ -127,12 +127,16 @@
                                 <div class="row">
                                     <div class="col-md-2">
                                         <ul class="tab-nav">
-                                            @foreach ($kategori as $kat)
-                                                <li class="nav-item">
-                                                    <a class="nav-link"
-                                                        href="{{ url('/kategori/' . $kat->id) }}">{{ $kat->kategori }}</a>
-                                                </li>
-                                            @endforeach
+                                            @isset($kategori)
+                                                <ul class="dropdown">
+                                                    @foreach ($kategori as $kat)
+                                                        <li class="nav-item">
+                                                            <a class="nav-link"
+                                                                href="{{ route('kategori.detail', $kat->idKategori) }}">{{ $kat->kategori }}</a>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            @endisset
                                         </ul>
                                     </div>
 
@@ -260,7 +264,7 @@
                                 @foreach ($kategori as $kat)
                                     <li class="nav-item">
                                         <a class="nav-link"
-                                            href="{{ url('/kategori/' . $kat->id) }}">{{ $kat->kategori }}</a>
+                                            href="{{ route('kategori.detail', $kat->idKategori) }}">{{ $kat->kategori }}</a>
                                     </li>
                                 @endforeach
                             </ul>
@@ -346,7 +350,8 @@
                     <ul class="dropdown">
                         @foreach ($kategori as $kat)
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/kategori/' . $kat->id) }}">{{ $kat->kategori }}</a>
+                                <a class="nav-link"
+                                    href="{{ route('kategori.detail', $kat->idKategori) }}">{{ $kat->kategori }}</a>
                             </li>
                         @endforeach
                     </ul>

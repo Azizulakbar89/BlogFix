@@ -47,4 +47,13 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function artikel()
+    {
+        return $this->hasMany(Artikel::class, 'idUser', 'id');
+    }
+    public function komentars()
+    {
+        return $this->hasMany(Komentar::class, 'idUser');
+    }
 }

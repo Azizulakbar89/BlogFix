@@ -12,6 +12,7 @@ class BlogController extends Controller
     public function blog()
     {
         // Ambil semua data kategori dan artikel
+
         $kategori = Kategori::all();
         $blog = Artikel::all();
         $recent1 = Artikel::with(['kategoris'])
@@ -56,14 +57,6 @@ class BlogController extends Controller
         } else {
             session()->flash('error', 'Gagal membuat artikel!');
         }
-
         return redirect()->route('blog');
-    }
-    public function showKategori($id)
-    {
-        $kategori = Kategori::findOrFail($id);
-        $blogs = Artikel::where('idKategori', $id)->get();
-
-        return view('kategori', compact('kategori', 'blogs'));
     }
 }

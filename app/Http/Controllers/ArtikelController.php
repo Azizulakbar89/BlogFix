@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Artikel;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -52,7 +53,54 @@ class ArtikelController extends Controller
         return response()->json(['success' => true, 'message' => 'Artikel berhasil dihapus']);
     }
 
-    public function show($id) {}
+    public function show($idArtikel)
+    {
+        // Ambil semua kategori
+        $kategori = Kategori::all();
+
+        // Cari artikel berdasarkan idArtikel
+        $artikel = Artikel::findOrFail($idArtikel);
+
+        // Hitung jumlah komentar untuk artikel ini
+        $jumlahKomentar = $artikel->komentars()->count();
+
+        // Ambil data komentar berdasarkan idArtikel
+        $komentars = $artikel->komentars()->with('user')->get(); // Jika komentar memiliki relasi ke user
+
+        // Ambil 3 artikel terbaru
+        $recent1 = Artikel::with(['kategoris'])
+            ->orderBy('idArtikel', 'desc')
+            ->take(3)
+            ->get();
+
+        // Ambil 5 artikel terpopuler berdasarkan rating
+        $popular = Artikel::with(['kategoris', 'ratings'])
+            ->withCount([
+                'ratings as total_rating' => function ($query) {
+                    $query->select(DB::raw('COALESCE(SUM(rating), 0)')); // Total rating
+                },
+                'ratings as count_rating' => function ($query) {
+                    $query->select(DB::raw('COUNT(rating)')); // Jumlah rating
+                }
+            ])
+            ->get() // Ambil semua data dulu
+            ->map(function ($artikel) {
+                // Hitung rata-rata rating di PHP
+                $artikel->avg_rating = $artikel->count_rating > 0
+                    ? ceil($artikel->total_rating / $artikel->count_rating) // Bulatkan ke atas
+                    : 0;
+                return $artikel;
+            })
+            ->sortByDesc('avg_rating') // Urutkan berdasarkan avg_rating
+            ->take(5); // Ambil 5 artikel terbaik
+        $totalRating = $artikel->ratings()->sum('rating');
+        $countRating = $artikel->ratings()->count();
+        $artikel->avg_rating = $countRating > 0 ? ceil($totalRating / $countRating) : 0;
+
+        // Kirim data ke view
+        return view('akun.show', compact('artikel', 'recent1', 'kategori', 'jumlahKomentar', 'popular', 'komentars'));
+    }
+
     public function edit($idArtikel)
     {
         $kategori = Kategori::all();

@@ -42,7 +42,7 @@ class HomeController extends Controller
             ->map(function ($artikel) {
                 // Hitung rata-rata rating di PHP
                 $artikel->avg_rating = $artikel->count_rating > 0
-                    ? $artikel->total_rating / $artikel->count_rating
+                    ? ceil($artikel->total_rating / $artikel->count_rating) // Bulatkan ke atas
                     : 0;
                 return $artikel;
             })
@@ -96,7 +96,7 @@ class HomeController extends Controller
             ->map(function ($artikel) {
                 // Hitung rata-rata rating di PHP
                 $artikel->avg_rating = $artikel->count_rating > 0
-                    ? $artikel->total_rating / $artikel->count_rating
+                    ? ceil($artikel->total_rating / $artikel->count_rating) // Bulatkan ke atas
                     : 0;
                 return $artikel;
             })
@@ -122,6 +122,6 @@ class HomeController extends Controller
         $kategori = Kategori::findOrFail($id);
         $blogs = Artikel::where('idKategori', $id)->get();
 
-        return view('kategori', compact('kategori', 'blogs'));
+        return view('kategori.detail', compact('kategori', 'blogs'));
     }
 }
