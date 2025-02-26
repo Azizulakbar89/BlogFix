@@ -39,7 +39,7 @@ class BlogController extends Controller
         if ($request->file('image')) {
             $extension = $request->file('image')->getClientOriginalExtension();
             $newName = $request->judul . '-' . now()->timestamp . '.' . $extension;
-            $request->file('image')->storeAs('gambar/' . $newName);
+            $request->file('image')->storeAs($newName);
         }
 
         // Create the article
