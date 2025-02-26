@@ -38,7 +38,7 @@
 
                 <!-- Tampilkan gambar yang sudah ada -->
                 @if ($blog->gambar)
-                    <img class="img-preview img-fluid mb-3 col-sm-7" src="{{ asset('storage/gambar/' . $blog->gambar) }}"
+                    <img class="img-preview img-fluid mb-3 col-sm-7" src="{{ asset('/storage/' . $blog->gambar) }}"
                         alt="Preview Gambar">
                 @else
                     <img class="img-preview img-fluid mb-3 col-sm-7" src="#" alt="Preview Gambar"

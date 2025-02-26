@@ -34,7 +34,7 @@
                                                 <div class="col-md-4">
                                                     <div class="post post-sm">
                                                         <a class="post-img" href="blog-post.html"><img
-                                                                src="{{ asset('storage/gambar/' . $item->gambar) }}"
+                                                                src="{{ asset('/storage/' . $item->gambar) }}"
                                                                 alt=""></a>
                                                         <div class="post-body">
                                                             <div class="post-category">

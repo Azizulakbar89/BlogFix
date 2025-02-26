@@ -12,7 +12,7 @@
                         <!-- post -->
                         <div class="post post-thumb">
                             <a class="post-img" href={{ route('artikel.show', $blogs->idArtikel) }}>
-                                <img src="{{ asset('storage/gambar/' . $blogs->gambar) }}" alt=""
+                                <img src="{{ asset('/storage/' . $blogs->gambar) }}" alt=""
                                     style="width: 100%; height: 505px; object-fit: cover; border-radius: 10px;">
                             </a>
                             <div class="post-body">
@@ -38,7 +38,7 @@
                         <div class="post post-thumb">
 
                             <a class="post-img" href={{ route('artikel.show', $blog->idArtikel) }}>
-                                <img src="{{ asset('storage/gambar/' . $blog->gambar) }}" alt=""
+                                <img src="{{ asset('/storage/' . $blog->gambar) }}" alt=""
                                     style="width: 100%; height: 250px; object-fit: cover;">
                             </a>
                             <div class="post-body">
@@ -84,7 +84,7 @@
                             <div class="col-md-6">
                                 <div class="post">
                                     <a class="post-img" href={{ route('artikel.show', $baru->idArtikel) }}><img
-                                            src="{{ asset('storage/gambar/' . $baru->gambar) }}" alt=""
+                                            src="{{ asset('/storage/' . $baru->gambar) }}" alt=""
                                             style="width: 100%; height: 250px; object-fit: cover;"></a>
                                     <div class="post-body">
                                         <div class="post-category">
@@ -145,7 +145,7 @@
                         @foreach ($popular as $gacor)
                             <div class="post post-widget">
                                 <a class="post-img" href={{ route('artikel.show', $gacor->idArtikel) }}><img
-                                        src="{{ asset('/storage/gambar/' . $gacor->gambar) }}" alt=""
+                                        src="{{ asset('/storage/' . $gacor->gambar) }}" alt=""
                                         style="width: 100%; height: 120px; object-fit: cover;"></a>
                                 <div class="post-body">
                                     <div class="post-category">
@@ -189,7 +189,7 @@
                         <div class="post post-row">
 
                             <a class="post-img" href={{ route('artikel.show', $haha->idArtikel) }}><img
-                                    src="{{ asset('/storage/gambar/' . $haha->gambar) }}" alt=""
+                                    src="{{ asset('/storage/' . $haha->gambar) }}" alt=""
                                     style="width: 100%; height: 300px; object-fit: cover;"></a>
                             <div class="post-body">
                                 <div class="post-category">

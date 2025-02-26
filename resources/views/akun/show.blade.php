@@ -26,7 +26,7 @@
             <div id="post-header" class="page-header">
                 <div class="page-header-bg"
                     style="
-                background-image: url('{{ $artikel->gambar ? asset('/storage/gambar/' . $artikel->gambar) : asset('/img/header-1.jpg') }}');
+                background-image: url('{{ $artikel->gambar ? asset('/storage/' . $artikel->gambar) : asset('/img/header-1.jpg') }}');
                 background-size: cover;
                 background-position: center;
                 background-repeat: no-repeat;
@@ -154,7 +154,7 @@
                             @foreach ($popular as $gacor)
                                 <div class="post post-widget">
                                     <a class="post-img" href={{ route('artikel.show', $gacor->idArtikel) }}><img
-                                            src="{{ asset('/storage/gambar/' . $gacor->gambar) }}" alt=""
+                                            src="{{ asset('/storage/' . $gacor->gambar) }}" alt=""
                                             style="width: 100%; height: 120px; object-fit: cover;"></a>
                                     <div class="post-body">
                                         <div class="post-category">

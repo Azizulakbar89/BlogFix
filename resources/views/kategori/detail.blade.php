@@ -12,7 +12,7 @@
                         <div class="post post-row mb-4">
                             <!-- Gambar Artikel -->
                             <a class="post-img" href="{{ route('artikel.show', $haha->idArtikel) }}">
-                                <img src="{{ asset('/storage/gambar/' . $haha->gambar) }}" alt=""
+                                <img src="{{ asset('/storage/' . $haha->gambar) }}" alt=""
                                     style="width: 100%; height: 300px; object-fit: cover;">
                             </a>
 
