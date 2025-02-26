@@ -45,8 +45,8 @@ class ArtikelController extends Controller
         $artikel->delete();
 
         // Hapus file gambar dari storage jika ada
-        if ($gambarPath && Storage::exists('gambar/' . $gambarPath)) {
-            Storage::delete('gambar/' . $gambarPath);
+        if ($gambarPath && Storage::exists('/public/storage' . $gambarPath)) {
+            Storage::delete('/public/storage' . $gambarPath);
         }
 
         // Redirect dengan pesan sukses
@@ -131,14 +131,14 @@ class ArtikelController extends Controller
         // Jika ada gambar baru, update
         if ($request->hasFile('gambar')) {
             // Hapus gambar lama jika ada
-            if ($blog->gambar && Storage::exists('public/gambar/' . $blog->gambar)) {
-                Storage::delete('public/gambar/' . $blog->gambar);
+            if ($blog->gambar && Storage::exists('/public/storage' . $blog->gambar)) {
+                Storage::delete('/public/storage' . $blog->gambar);
             }
 
             // Simpan gambar baru
             $extension = $request->file('gambar')->getClientOriginalExtension();
             $newName = $request->judul . '-' . now()->timestamp . '.' . $extension;
-            $request->file('gambar')->storeAs('gambar', $newName);
+            $request->file('gambar')->storeAs($newName);
         }
 
         // Simpan perubahan pada database
