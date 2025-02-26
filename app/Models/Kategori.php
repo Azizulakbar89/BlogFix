@@ -9,6 +9,7 @@ class Kategori extends Model
 {
     use HasFactory;
     protected $primaryKey = 'idKategori';
+    protected $fillable = ['kategori'];
 
     public function artikels()
     {

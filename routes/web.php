@@ -25,6 +25,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/create', [BlogController::class, 'store'])->name('create');
 
     Route::get('/myblog', [ArtikelController::class, 'myblog'])->name('myblog');
+    Route::get('/kat', [ArtikelController::class, 'kategori'])->name('kategori');
+    Route::post('/kategori/store', [ArtikelController::class, 'store'])->name('kategori.store');
     Route::get('/artikel/{idArtikel}/edit', [ArtikelController::class, 'edit'])->name('artikel.edit');
     Route::put('/artikel/{idArtikel}', [ArtikelController::class, 'update'])->name('artikel.update');
     Route::delete('/artikel/{idArtikel}', [ArtikelController::class, 'destroy'])->name('artikel.destroy');

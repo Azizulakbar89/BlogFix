@@ -207,6 +207,9 @@
                                                                     <div><x-dropdown-link :href="route('myblog')">
                                                                             {{ __('My Blog') }}
                                                                         </x-dropdown-link></div>
+                                                                    <div><x-dropdown-link :href="route('kategori')">
+                                                                            {{ __('Kategori') }}
+                                                                        </x-dropdown-link></div>
                                                                     <form method="POST" action="{{ route('logout') }}">
                                                                         @csrf
                                                                         <x-dropdown-link :href="route('logout')"

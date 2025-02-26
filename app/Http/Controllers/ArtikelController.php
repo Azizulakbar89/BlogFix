@@ -151,4 +151,37 @@ class ArtikelController extends Controller
         // Redirect dengan pesan sukses
         return redirect()->route('myblog')->with('success', 'Artikel berhasil diupdate');
     }
+
+    public function kategori()
+    {
+        $userId = Auth::id();
+        $artikel = Artikel::with(['kategoris', 'ratings'])
+            ->where('idUser', $userId) // Filter berdasarkan idUser
+            ->orderBy('idArtikel', 'desc')
+            ->paginate(10);
+
+        $kategori = Kategori::all();
+        $recent1 = Artikel::with(['kategoris'])
+            ->orderBy('idArtikel', 'desc')
+            ->take(3)
+            ->get();
+
+        return view('akun.kategori', compact('artikel', 'kategori', 'recent1'));
+    }
+
+    public function store(Request $request)
+    {
+        // Validasi input
+        $request->validate([
+            'kategori' => 'required|string|max:255|unique:kategoris,kategori',
+        ]);
+
+        // Simpan data ke database
+        Kategori::create([
+            'kategori' => $request->kategori,
+        ]);
+
+        // Redirect dengan pesan sukses
+        return redirect()->route('kategori')->with('success', 'Kategori berhasil ditambahkan!');
+    }
 }
