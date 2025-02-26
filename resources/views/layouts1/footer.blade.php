@@ -7,8 +7,8 @@
                 <div class="col-md-3">
                     <div class="footer-widget">
                         <div class="footer-logo">
-                            <a href="index.html" class="logo"><img src="{{ asset('/assets/img/logo-alt.png') }}"
-                                    alt=""></a>
+                            {{-- <a href="index.html" class="logo"><img src="{{ asset('/assets/img/logo-alt.png') }}"
+                                    alt=""></a> --}}
 
                         </div>
                         <p>Nec feugiat nisl pretium fusce id velit ut tortor pretium. Nisl purus in mollis nunc sed.

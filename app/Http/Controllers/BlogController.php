@@ -49,6 +49,7 @@ class BlogController extends Controller
             'judul' => $request->judul,
             'gambar' => $newName,
             'deskripsi' => $request->deskripsi,
+            'created_at' => now(),
         ]);
 
         // Check if the article was created successfully

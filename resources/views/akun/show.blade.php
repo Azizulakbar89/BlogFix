@@ -80,15 +80,7 @@
 
                         <!-- post content -->
                         <div class="section-row">
-                            @if (!empty($artikel->deskripsi))
-                                @foreach (array_slice(explode("\n", $artikel->deskripsi), 0, 1) as $paragraph)
-                                    <div>
-                                        {!! \Illuminate\Support\Str::words($paragraph, 50, '...') !!}
-                                    </div>
-                                @endforeach
-                            @else
-                                <div class="text-muted">Tidak ada deskripsi.</div>
-                            @endif
+                            {!! $artikel->deskripsi !!}
                         </div>
                         <!-- /post content -->
                         <!-- post reply -->
@@ -238,5 +230,4 @@
             });
         });
     </script>
-
 @endsection
