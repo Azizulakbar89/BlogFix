@@ -25,6 +25,8 @@ class BlogController extends Controller
         return view('akun.blog', compact('blog', 'kategori', 'recent1'));
     }
 
+
+
     public function store(Request $request)
     {
         // Validasi input
@@ -40,7 +42,7 @@ class BlogController extends Controller
         if ($request->file('image')) {
             $extension = $request->file('image')->getClientOriginalExtension();
             $newName = $request->judul . '-' . now()->timestamp . '.' . $extension;
-            $request->file('image')->storeAs($newName);
+            $path = $request->file('image')->storeAs('gambar', $newName);
         }
 
         // Create the article
