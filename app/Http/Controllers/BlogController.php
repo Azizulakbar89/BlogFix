@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use session;
 use App\Models\Artikel;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
