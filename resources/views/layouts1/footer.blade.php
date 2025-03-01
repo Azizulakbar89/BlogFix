@@ -56,6 +56,7 @@
     <script src="{{ asset('/assets/js/bootstrap.min.js') }} "></script>
     <script src="{{ asset('/assets/js/jquery.stellar.min.js') }}"></script>
     <script src="{{ asset('/assets/js/main.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
 
     </body>
 
