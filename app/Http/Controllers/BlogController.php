@@ -53,9 +53,18 @@ class BlogController extends Controller
         // }
 
         // Create the article
+        // $artikel = Artikel::create([
+        //     'idKategori' => $request->idKategori,
+        //     'idUser' => Auth::id(), // Ensure the user is authenticated
+        //     'judul' => $request->judul,
+        //     'gambar' => $newName,
+        //     'deskripsi' => $request->deskripsi,
+        //     'created_at' => now(),
+        // ]);
+
         $artikel = Artikel::create([
             'idKategori' => $request->idKategori,
-            'idUser' => Auth::id(), // Ensure the user is authenticated
+            'idUser' => Auth::id(), // Pastikan pengguna sudah terautentikasi
             'judul' => $request->judul,
             'gambar' => $newName,
             'deskripsi' => $request->deskripsi,
