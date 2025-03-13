@@ -34,33 +34,32 @@ class BlogController extends Controller
             'judul' => 'required|string|max:255',
             'deskripsi' => 'required|string',
             'idKategori' => 'required|exists:kategoris,idKategori',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:20480',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:20480', // Pastikan ini sesuai dengan field di form
         ]);
 
         // Handle image upload
         $newName = '';
-        if ($request->file('image')) {
-            $extension = $request->file('image')->getClientOriginalExtension();
+        if ($request->file('gambar')) { // Sesuaikan dengan nama field di form
+            $extension = $request->file('gambar')->getClientOriginalExtension();
             $newName = $request->judul . '-' . now()->timestamp . '.' . $extension;
-            $path = $request->file('image')->storeAs('gambar', $newName);
+            $path = $request->file('gambar')->storeAs('gambar', $newName, 'public'); // Simpan di disk 'public'
         }
 
         // Create the article
         $artikel = Artikel::create([
             'idKategori' => $request->idKategori,
-            'idUser' => Auth::id(), // Ensure the user is authenticated
+            'idUser' => Auth::id(), // Pastikan pengguna sudah terautentikasi
             'judul' => $request->judul,
             'gambar' => $newName,
             'deskripsi' => $request->deskripsi,
             'created_at' => now(),
         ]);
 
-        // Check if the article was created successfully
+        // Redirect dengan pesan sukses atau error
         if ($artikel) {
-            session()->flash('success', 'Artikel berhasil dibuat!');
+            return redirect()->route('blog')->with('success', 'Artikel berhasil dibuat!');
         } else {
-            session()->flash('error', 'Gagal membuat artikel!');
+            return redirect()->route('blog')->with('error', 'Gagal membuat artikel!');
         }
-        return redirect()->route('blog');
     }
 }
